@@ -24,6 +24,17 @@ const App = React.createClass({
     };
   },
 
+  componentDidMount: function() {
+    console.log("componentDidMount <App />");
+    setTimeout(() => {
+      console.log("Simulating incoming message");
+      // Add a new message to the list of messages in the data store
+      this.state.messages.push({id: 3, username: "Michelle", content: "Hello there!"});
+      // Update the state of the app component. This will call render()
+      this.setState({messages: this.state.messages})
+    }, 3000);
+  },
+
   render: function() {
     return (
       <div className="wrapper">
@@ -38,4 +49,6 @@ const App = React.createClass({
 })
 
 export default App;
+
+
 
