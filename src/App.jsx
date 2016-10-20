@@ -35,6 +35,11 @@ const App = React.createClass({
     }, 3000);
   },
 
+  handleChange: function(message) {
+    this.state.messages.push({username: "Bob", content: message});
+    this.setState({messages: this.state.messages})
+  },
+
   render: function() {
     return (
       <div className="wrapper">
@@ -42,7 +47,7 @@ const App = React.createClass({
           <h1>Chatty</h1>
         </nav>
         <MessageList messages={this.state.messages}/>
-        <ChatBar currentUser={this.state.currentUser.name}/>
+        <ChatBar currentUser={this.state.currentUser.name} callbackChange={this.handleChange} />
       </div>
     )
   }
